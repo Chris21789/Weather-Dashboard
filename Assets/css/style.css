@@ -1,0 +1,58 @@
+header {
+    background-image: linear-gradient(to right, lightblue 0%, lightblue 25%, blue 50%, darkblue 75%, darkblue 100%);
+    font-weight: 900;
+    color: white;
+    text-align: right;
+    padding: .7%;
+    padding-right: 30%;
+    font-size: 32px;
+}
+
+#fetch-button {
+    width: 100%;
+}
+
+#formTitle {
+    font-weight: 800;
+    font-size: 28px;
+}
+
+#currentWeather {
+    margin: .5%;
+    margin-left: .1%;
+}
+
+#forecastTitle {
+    font-weight: 800;
+    font-size: 20px;
+    margin: .5%;
+    margin-left: .1%;
+}
+
+#locationBtns {
+    margin-top: 8%;
+}
+
+.current-card-text {
+    margin-bottom: 2%;
+}
+
+.current-card-title {
+    font-weight: 900;
+    font-size: 28px;
+}
+
+button {
+    width: 100%;
+    margin-bottom: 6%;
+}
+
+.card-body {
+    padding: 1% 0%;
+}
+
+.divider {   
+    padding: 1% 0%; 
+    border-bottom: 1px solid;
+    border-color: grey;
+}

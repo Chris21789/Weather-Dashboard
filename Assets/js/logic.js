@@ -74,6 +74,7 @@ locationForm.addEventListener("submit", (event) => {
         btn.textContent = `${cityNameEl.value}`;
         btn.setAttribute("lon", lon);        
         btn.setAttribute("lat", lat);
+
         locationBtns.appendChild(btn);
 
         getWeather();

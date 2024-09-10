@@ -1,18 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 
-  <body>
-    <form id="locationForm">
-      <label for="">Search for a City:</label>
-      <input type="text" id="cityName" />
-      <button type="submit" id="fetch-button">Search</button>
-    </form>
-    <div id="locationBtns"></div>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <header>Weather Dashboard</header>
+   
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Cities Container -->
+            <div class="col-2">
+
+                <!-- Form -->
+                <form id="locationForm">
+                    <div class="mb-3">
+                        <label for="" id="formTitle">Search for a City:</label>
+                        <input type="text" class="form-control" id="cityName" aria-describedby="cityName"
+                            placeholder="Orlando" />
+                    </div>
+
+                    <!-- Submit Btn -->
+                    <button type="submit" class="btn btn-primary" id="fetch-button">
+                        Search
+                    </button>
+                </form>
+
+                <!-- Divisor     -->
+                <div class="divider"></div>
+
+
+                <!-- List of Cities -->
+                <div id="locationBtns"></div>
+            </div>
+
+            <!-- Weather Container -->
+            <div class="col-10">
+
+                <!-- Current Weather -->
+                <div class="row" id="currentWeather">
+                    <div class="card" style="width: 90%;" id="currentWeather">
+                        <div class="card-body">
+                            <h5 class="current-card-title" id="cityName">City placeholder</h5><br>
+                            <p class="current-card-text" id="currentTemp">Temp: &deg;F</p>
+                            <p class="current-card-text" id="currentWind">Wind: MPH</p>
+                            <p class="current-card-text" id="currentHum">Humidity: %</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 Day Forecast -->
+                <div class="row" id="forecastTitle" class="forecastTitle">5 Day Forecast</div>
+                <div class="row" id="currentWeather">
+                    <div class="card" style="width: 15%; margin-right: 3.8%;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="day1">Date</h5>
+                            <img src="">
+                            <p class="card-text" id="day1Temp">Temp: &deg;F</p>
+                            <p class="card-text" id="day1Wind">Wind: MPH</p>
+                            <p class="card-text" id="day1Hum">Humidity: %</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 15%; margin-right: 3.8%;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="day2">Date</h5>
+                            <img src="">
+                            <p class="card-text" id="day2Temp">Temp: &deg;F</p>
+                            <p class="card-text" id="day2Wind">Wind: MPH</p>
+                            <p class="card-text" id="day2Hum">Humidity: %</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 15%; margin-right: 3.8%;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="day3">Date</h5>
+                            <img src="">
+                            <p class="card-text" id="day3Temp">Temp: &deg;F</p>
+                            <p class="card-text" id="day3Wind">Wind: MPH</p>
+                            <p class="card-text" id="day3Hum">Humidity: %</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 15%; margin-right: 3.8%;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="day4">Date</h5>
+                            <img src="">
+                            <p class="card-text" id="day4Temp">Temp: &deg;F</p>
+                            <p class="card-text" id="day4Wind">Wind: MPH</p>
+                            <p class="card-text" id="day4Hum">Humidity: %</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 15%; margin-right: 3.8%;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="day5">Date</h5>
+                            <img src="">
+                            <p class="card-text" id="day5Temp">Temp: &deg;F</p>
+                            <p class="card-text" id="day5Wind">Wind: MPH</p>
+                            <p class="card-text" id="day5Hum">Humidity: %</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+
     <script src="./assets/js/logic.js"></script>
-  </body>
+</body>
+
 </html>
