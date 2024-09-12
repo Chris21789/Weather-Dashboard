@@ -8,6 +8,11 @@ header {
     font-size: 32px;
 }
 
+img {
+    width: 3%;
+    height: auto; 
+}
+
 #fetch-button {
     width: 100%;
 }
