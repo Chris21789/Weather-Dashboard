@@ -10,16 +10,16 @@ class Geolocation {
 }
 
 var now = dayjs();
-console.log(now.format('MM/DD/YYYY'));
+// console.log(now.format('MM/DD/YYYY'));
 
 
 
 //pulls weather info using geo info
 function getWeather() {
   const geolocation = JSON.parse(localStorage.getItem("geolocation"));
-  console.log(geolocation);
-  console.log(geolocation.lon);
-  console.log(geolocation.lat);
+  // console.log(geolocation);
+  // console.log(geolocation.lon);
+  // console.log(geolocation.lat);
 
   const currentDay = `https://api.openweathermap.org/data/2.5/weather?lat=${geolocation.lat}&lon=${geolocation.lon}&appid=5790fe317b106c7e96164e5dc26f6fd3&units=imperial`;
 
@@ -28,11 +28,11 @@ function getWeather() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      console.log(data.weather[0].icon);
-      console.log(data.main.temp);
-      console.log(data.wind.speed);
-      console.log(data.main.humidity);
+      // console.log(data);
+      // console.log(data.weather[0].icon);
+      // console.log(data.main.temp);
+      // console.log(data.wind.speed);
+      // console.log(data.main.humidity);
 
       document.getElementById(
         "cardCityName"
@@ -54,18 +54,40 @@ function getWeather() {
     .then(function (response) {
       return response.json();
     })
-    .then(function (data) {
-      
-      console.log(data.list);
+    .then(function (data) {      
+      // var testDate = dayjs(`${data.list[1].dt_txt}`).format(); 
+      // console.log(testDate);
 
-      const fiveDay = [];
-      console.log(fiveDay);
+      // var addDay = testDate.add(1, 'day');
+      // console.log(addDay);
       
-      // for (let i = 0; i <= data.list.length; i++) {
-      //   console.log(data.list);
-      //   fiveDay.push(data.list[i]);
-      //   console.log(fiveDay);
-      // }
+      // const a = dayjs(`${data.list[1].dt_txt}`)
+      // const b = a.add(1, 'day')
+      // console.log(a, b);
+      
+      const fiveDay = [];
+      var testDate = '';
+
+      for (let i = 0; i <= (data.list.length)-1; i++) {
+        console.log(testDate);              
+        if (testDate === '' || dayjs(testDate).isBefore(dayjs(`${data.list[i].dt_txt}`))) {
+          fiveDay.push(data.list[i]);
+          testDate = dayjs(`${data.list[i].dt_txt}`).add(23, 'hours');
+        }
+        console.log(fiveDay);
+      }
+      
+      for (let i = 0; i < fiveDay.length; i++) {
+        let fdDate = dayjs(`${fiveDay[i].dt_txt}`).format('MM/DD/YYYY');
+        console.log(fdDate);
+        
+        document.getElementById("day"+(i)).textContent = `${fdDate}`;
+        document.getElementById("day"+(i)+"Icon").innerHTML = `<img src="https://openweathermap.org/img/wn/${fiveDay[i].weather[0].icon}@2x.png">`;        
+        document.getElementById("day"+(i)+"Temp").innerHTML = `Temp: ${fiveDay[i].main.temp}\u00B0F`;
+        document.getElementById("day"+(i)+"Wind").innerHTML =  `Wind: ${fiveDay[i].main.humidity} MPH`;
+        document.getElementById("day"+(i)+"Hum").innerHTML = `Humidity: ${fiveDay[i].wind.speed}%`;
+      };
+
     });
 }
 
@@ -74,14 +96,14 @@ locationBtns.addEventListener("click", function (event) {
   event.preventDefault();
 
   const element = event.target;
-  console.log(element);
+  // console.log(element);
 
   const geolocation = new Geolocation(
     element.getAttribute("cityName"),
     element.getAttribute("lon"),
     element.getAttribute("lat")
   );
-  console.log(geolocation);
+  // console.log(geolocation);
 
   localStorage.setItem("geolocation", JSON.stringify(geolocation));
 
@@ -99,15 +121,15 @@ locationForm.addEventListener("submit", (event) => {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       for (let i = 0; i < data.length; i++) {
         const lon = data[i].lon;
         const lat = data[i].lat;
         const cityName = cityNameEl.value;
-        console.log(`${data[i].lat} ${data[i].lon}`);
+        // console.log(`${data[i].lat} ${data[i].lon}`);
 
         const geolocation = new Geolocation(cityName, lon, lat);
-        console.log(geolocation);
+        // console.log(geolocation);
 
         localStorage.setItem("geolocation", JSON.stringify(geolocation));
 

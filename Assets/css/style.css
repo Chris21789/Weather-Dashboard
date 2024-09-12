@@ -8,8 +8,13 @@ header {
     font-size: 32px;
 }
 
+#currentWeather img {
+    width: 5%;
+    height: auto; 
+}
+
 img {
-    width: 3%;
+    width: 40%;
     height: auto; 
 }
 
@@ -23,6 +28,11 @@ img {
 }
 
 #currentWeather {
+    margin: .5%;
+    margin-left: .1%;
+}
+
+#forecastWeather {
     margin: .5%;
     margin-left: .1%;
 }
