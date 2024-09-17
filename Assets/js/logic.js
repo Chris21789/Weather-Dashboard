@@ -2,6 +2,7 @@ const locationForm = document.getElementById("locationForm");
 const cityNameEl = document.getElementById("cityName");
 const locationBtns = document.getElementById("locationBtns");
 const fetchButton = document.getElementById("fetch-button");
+const apiKey = '5790fe317b106c7e96164e5dc26f6fd3';
 
 class Geolocation {
   constructor(cityName, lon, lat) {
@@ -21,7 +22,7 @@ function getWeather() {
   // console.log(geolocation.lon);
   // console.log(geolocation.lat);
 
-  const currentDay = `https://api.openweathermap.org/data/2.5/weather?lat=${geolocation.lat}&lon=${geolocation.lon}&appid=5790fe317b106c7e96164e5dc26f6fd3&units=imperial`;
+  const currentDay = `https://api.openweathermap.org/data/2.5/weather?lat=${geolocation.lat}&lon=${geolocation.lon}&appid=${apiKey}&units=imperial`;
 
   fetch(currentDay)
     .then(function (response) {
@@ -48,7 +49,7 @@ function getWeather() {
       ).textContent = `Humidity: ${data.main.humidity}%`;
     });
 
-  const forecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${geolocation.lat}&lon=${geolocation.lon}&appid=5790fe317b106c7e96164e5dc26f6fd3&units=imperial`;
+  const forecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${geolocation.lat}&lon=${geolocation.lon}&appid=${apiKey}&units=imperial`;
 
   fetch(forecast)
     .then(function (response) {
@@ -114,7 +115,7 @@ locationBtns.addEventListener("click", function (event) {
 locationForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityNameEl.value}&limit=1&appid=5790fe317b106c7e96164e5dc26f6fd3`;
+  const requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityNameEl.value}&limit=1&appid=${apiKey}`;
 
   fetch(requestUrl)
     .then(function (response) {
