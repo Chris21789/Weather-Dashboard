@@ -84,8 +84,8 @@ function getWeather() {
         document.getElementById("day"+(i)).textContent = `${fdDate}`;
         document.getElementById("day"+(i)+"Icon").innerHTML = `<img src="https://openweathermap.org/img/wn/${fiveDay[i].weather[0].icon}@2x.png">`;        
         document.getElementById("day"+(i)+"Temp").innerHTML = `Temp: ${fiveDay[i].main.temp}\u00B0F`;
-        document.getElementById("day"+(i)+"Wind").innerHTML =  `Wind: ${fiveDay[i].main.humidity} MPH`;
-        document.getElementById("day"+(i)+"Hum").innerHTML = `Humidity: ${fiveDay[i].wind.speed}%`;
+        document.getElementById("day"+(i)+"Wind").innerHTML =  `Wind: ${fiveDay[i].wind.speed} MPH`;
+        document.getElementById("day"+(i)+"Hum").innerHTML = `Humidity: ${fiveDay[i].main.humidity}%`;
       };
 
     });
