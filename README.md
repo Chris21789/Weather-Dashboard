@@ -20,6 +20,13 @@ Provides users a search engine for a clean view of the current weather in a give
 
 Users will need to input the city they would like to see weather for in the search bar. This will populate the weather information as well as create a clickable button for the user to check any city they have already searched.
 
+## Screenshots
+
+![Mainpage with no weather](./Assets/screenshots/mainpage%20no%20weather.png)
+
+![Mainpage with weather](./Assets/screenshots/mainpage%20weather.png)
+
+
 ## Contributing
 
 Any constructive input would be a welcomed contribution.
